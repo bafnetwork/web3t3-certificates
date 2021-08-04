@@ -2,7 +2,6 @@ import { DateTime } from 'luxon';
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import abi from '../abi.json';
-import contractInfo from '../contract.json';
 import useContract from '../hooks/Contract';
 import { useConnection } from '../providers/Connection';
 import { TokenMetadata } from '../utils/tokenMetadata';
@@ -20,7 +19,7 @@ export function View() {
   const { provider } = useConnection();
   const contract = useContract({
     provider: provider!,
-    address: contractInfo.address,
+    address: process.env.REACT_APP_CONTRACT_ADDRESS!,
     abi,
   });
 

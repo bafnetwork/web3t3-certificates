@@ -1,9 +1,8 @@
 import { getChainId } from './utils/chainId';
-import contract from './contract.json';
 
 export default async function domain() {
   const currentChainId = await getChainId();
-  if (currentChainId !== contract.chainId) {
+  if (currentChainId !== process.env.REACT_APP_CHAIN_ID) {
     throw new Error('Incorrect chain id');
   }
 
@@ -11,6 +10,6 @@ export default async function domain() {
     chainId: currentChainId,
     name: 'Web3T3 Certificate',
     version: '1',
-    verifyingContract: contract.address,
+    verifyingContract: process.env.REACT_APP_CONTRACT_ADDRESS,
   };
 }

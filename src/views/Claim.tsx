@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import abi from '../abi.json';
-import contractInfo from '../contract.json';
 import useContract from '../hooks/Contract';
 import { useConnection } from '../providers/Connection';
 import { decodeTokenClaim } from '../utils/tokenClaim';
@@ -11,7 +10,7 @@ export function Claim() {
   const { provider } = useConnection();
   const contract = useContract({
     abi,
-    address: contractInfo.address,
+    address: process.env.REACT_APP_CONTRACT_ADDRESS!,
     provider: provider!,
   });
 

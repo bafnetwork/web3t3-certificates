@@ -1,7 +1,6 @@
 import { DateTime } from 'luxon';
 import React, { useEffect, useState } from 'react';
 import abi from '../abi.json';
-import contractInfo from '../contract.json';
 import useContract from '../hooks/Contract';
 import { useConnection } from '../providers/Connection';
 import { encodeTokenClaim, signTokenClaim } from '../utils/tokenClaim';
@@ -10,7 +9,7 @@ export function Sign() {
   const { provider } = useConnection();
   const contract = useContract({
     abi,
-    address: contractInfo.address,
+    address: process.env.REACT_APP_CONTRACT_ADDRESS!,
     provider: provider!,
   });
 
