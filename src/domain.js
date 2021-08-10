@@ -1,8 +1,8 @@
 import { getChainId } from './utils/chainId';
 
 export default async function domain() {
-  const currentChainId = await getChainId();
-  if (currentChainId !== process.env.REACT_APP_CHAIN_ID) {
+  const currentChainId = parseInt(await getChainId());
+  if (currentChainId !== parseInt(process.env.REACT_APP_CHAIN_ID)) {
     throw new Error('Incorrect chain id');
   }
 
